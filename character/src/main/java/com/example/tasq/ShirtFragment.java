@@ -77,7 +77,7 @@ public class ShirtFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the fragment layout
         View rootView = inflater.inflate(R.layout.fragment_shirt, container, false);
-        View rootView1 = inflater.inflate(R.layout.activity_character, container, false);
+        View rootView1 = inflater.inflate(R.layout.activity_main, container, false);
         mainShirt = rootView1.findViewById(R.id.shirt_image_view);
         shirt1 = rootView.findViewById(R.id.myShirtView1);
         shirt2 = rootView.findViewById(R.id.myShirtView3);

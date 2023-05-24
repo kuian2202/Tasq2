@@ -77,7 +77,7 @@ public class TrouserFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the fragment layout
         View rootView = inflater.inflate(R.layout.fragment_trouser, container, false);
-        View rootView1 = inflater.inflate(R.layout.activity_character, container, false);
+        View rootView1 = inflater.inflate(R.layout.activity_main, container, false);
         mainPants = rootView1.findViewById(R.id.pants_image_view);
         pants1 = rootView.findViewById(R.id.myPantsView1);
         pants2 = rootView.findViewById(R.id.myPantsView2);

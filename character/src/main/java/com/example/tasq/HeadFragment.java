@@ -77,7 +77,7 @@ public class HeadFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the fragment layout
         View rootView = inflater.inflate(R.layout.fragment_head, container, false);
-        View rootView1 = inflater.inflate(R.layout.activity_character, container, false);
+        View rootView1 = inflater.inflate(R.layout.activity_main, container, false);
         mainHead = rootView1.findViewById(R.id.head_image_view);
         head1 = rootView.findViewById(R.id.myHeadView1);
         head2 = rootView.findViewById(R.id.myHeadView2);
