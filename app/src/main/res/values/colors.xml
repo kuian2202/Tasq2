@@ -11,6 +11,8 @@
     <color name="torange">#E68400</color>
     <color name="tbg">#FFD393</color>
     <color name="gray">#949494</color>
+    <color name="icon">#5E9FFF</color>
     <color name="transparent">#00000000</color>
+    <color name="statusBar">#FFD393</color>
 
 </resources>

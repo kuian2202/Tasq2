@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tasq"
 include ':app'
-include ':character'
