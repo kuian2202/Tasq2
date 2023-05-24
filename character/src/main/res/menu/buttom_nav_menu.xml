@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title=""
+        android:icon="@drawable/hair"
+        android:id="@+id/hair" />
+    <item android:title=""
+        android:icon="@drawable/shirt_svgrepo_com"
+        android:id="@+id/shirt"/>
+    <item android:title=""
+        android:icon="@drawable/trousers_svgrepo_com"
+        android:id="@+id/trouser"/>
+</menu>

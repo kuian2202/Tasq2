@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrouserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="362dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/myPantsView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants1"
+                    app:layout_constraintBottom_toTopOf="@id/myPantsView4"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/myPantsView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginBottom="20dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants2"
+                    app:layout_constraintBottom_toTopOf="@id/myPantsView5"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView3"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/myPantsView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants3"
+                    app:layout_constraintBottom_toTopOf="@id/myPantsView6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/myPantsView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants4"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView1" />
+
+                <ImageView
+                    android:id="@+id/myPantsView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants5"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView6"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView4"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView2" />
+
+                <ImageView
+                    android:id="@+id/myPantsView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView5"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView3" />
+
+                <ImageView
+                    android:id="@+id/myPantsView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants7"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView4" />
+
+                <ImageView
+                    android:id="@+id/myPantsView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants8"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView9"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView7"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView5" />
+
+                <ImageView
+                    android:id="@+id/myPantsView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView8"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView6" />
+
+                <ImageView
+                    android:id="@+id/myPantsView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants10"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView7" />
+
+                <ImageView
+                    android:id="@+id/myPantsView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants11"
+                    app:layout_constraintEnd_toStartOf="@id/myPantsView12"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView10"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView8" />
+
+                <ImageView
+                    android:id="@+id/myPantsView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/pants12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myPantsView11"
+                    app:layout_constraintTop_toBottomOf="@id/myPantsView9" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:layout_constraintTop_toBottomOf="@+id/myPantsView11" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

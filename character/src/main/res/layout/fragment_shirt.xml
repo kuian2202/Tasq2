@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShirtFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="364dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/myShirtView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginBottom="444dp"
+                    android:clickable="true"
+                    android:src="@drawable/upper_limb"
+                    app:layout_constraintBottom_toTopOf="@id/myShirtView4"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/myShirtView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt1"
+                    app:layout_constraintBottom_toTopOf="@id/myShirtView6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/myShirtView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/shirt2"
+                    app:layout_constraintBottom_toTopOf="@id/myShirtView5"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView2"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/myShirtView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt3"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView1" />
+
+                <ImageView
+                    android:id="@+id/myShirtView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt4"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView6"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView4"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView3" />
+
+                <ImageView
+                    android:id="@+id/myShirtView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView5"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView2" />
+
+                <ImageView
+                    android:id="@+id/myShirtView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt6"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView4" />
+
+                <ImageView
+                    android:id="@+id/myShirtView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt7"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView9"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView7"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView5" />
+
+                <ImageView
+                    android:id="@+id/myShirtView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="5dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView8"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView6" />
+
+                <ImageView
+                    android:id="@+id/myShirtView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="34dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt9"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView7" />
+
+                <ImageView
+                    android:id="@+id/myShirtView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="16dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt10"
+                    app:layout_constraintEnd_toStartOf="@id/myShirtView12"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView10"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView8" />
+
+                <ImageView
+                    android:id="@+id/myShirtView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:src="@drawable/shirt11"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/myShirtView11"
+                    app:layout_constraintTop_toBottomOf="@id/myShirtView9" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:layout_constraintTop_toBottomOf="@+id/myShirtView11" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

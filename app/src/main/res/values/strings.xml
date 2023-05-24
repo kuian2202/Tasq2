@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Tasq</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOG IN</string>
+    <string name="fpassword">Forgot Password?</string>
+    <string name="noaccount">Dont have an account?</string>
+    <string name="signup">Sign up</string>
+    <string name="register">Register</string>
+    <string name="or">or sign in with</string>
+    <string name="home">Home</string>
+    <string name="sched">Schedule</string>
+    <string name="customize">Customization</string>
+    <string name="settings">Settings</string>
+    <string name="task">My Task</string>
+    <string name="highpriotask">High Priority Task</string>
+</resources>
