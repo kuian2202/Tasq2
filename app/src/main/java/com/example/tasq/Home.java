@@ -2,7 +2,6 @@ package com.example.tasq;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.lights.LightState;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tasq.adapters.ToDoAdapter;
 import com.example.tasq.database.DatabaseHandler;
 import com.example.tasq.models.ToDoModel;
-import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,6 +30,7 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
     private DatabaseHandler db;
     private List<ToDoModel> taskList;
     private BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
