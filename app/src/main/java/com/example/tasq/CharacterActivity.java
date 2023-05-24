@@ -1,5 +1,6 @@
 package com.example.tasq;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,17 @@ public class CharacterActivity extends AppCompatActivity {
         shirtImageView = findViewById(R.id.shirt_image_view);
         pantsImageView = findViewById(R.id.pants_image_view);
     }
+    @Override
+    public void onBackPressed() {
+        // Add your additional functionality here
 
+        // For example, if you want to go back to the Home activity
+        Intent intent = new Intent(CharacterActivity.this, Home.class);
+        startActivity(intent);
+
+        // Finish the current activity (optional)
+        finish();
+    }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
