@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="@drawable/gradient_background"
     tools:context=".Group1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    android:layout_marginTop="20dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/tbgd"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="220dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="6dp"
+            android:text="Web Design"
+            android:textColor="@color/tblue"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="173dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="-20dp"
+            android:text="Collaboration Project"
+            android:textColor="@color/tblue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Collaborators: Ross, Matthew, John" />
+
+
+        <CheckBox
+            android:id="@+id/todoCheckBox1"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="8dp"
+            android:checked="true"
+            android:layout_marginTop="40dp"
+            android:text="Create UI Design" />
+        <CheckBox
+            android:id="@+id/todoCheckBox2"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:checked="true"
+            android:paddingStart="8dp"
+            android:layout_marginTop="15dp"
+            android:text="HTML Codes" />
+        <CheckBox
+            android:id="@+id/todoCheckBox3"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:checked="true"
+            android:paddingStart="8dp"
+            android:layout_marginTop="15dp"
+            android:text="Implement UI Design" />
+        <CheckBox
+            android:id="@+id/todoCheckBox4"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="8dp"
+            android:layout_marginTop="15dp"
+            android:text="Javascript Codes" />
+        <CheckBox
+            android:id="@+id/todoCheckBox5"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="8dp"
+            android:layout_marginTop="15dp"
+            android:text="React" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+</ScrollView>
