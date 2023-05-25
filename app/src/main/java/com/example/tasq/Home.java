@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,13 +32,29 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
     private List<ToDoModel> taskList;
     private BottomNavigationView bottomNavigationView;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
-
+        ImageView myImageView1 = findViewById(R.id.group1);
+        ImageView myImageView2 = findViewById(R.id.group2);
+        myImageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click event
+                Intent intent = new Intent(Home.this, Group1.class);
+                startActivity(intent);
+            }
+        });
+        myImageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click event
+                Intent intent = new Intent(Home.this, Group2.class);
+                startActivity(intent);
+            }
+        });
 
         db = new DatabaseHandler(this);
         db.openDatabase();
@@ -99,6 +116,10 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         });
 
 
+    }
+    public void changeHeadImageProfile(int resourceId) {
+        ImageView headImageViewProfile = findViewById(R.id.head_image_view_profile);
+        headImageViewProfile.setImageResource(resourceId);
     }
     @Override
     public void handleDialogClose(DialogInterface dialog){

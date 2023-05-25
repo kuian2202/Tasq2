@@ -14,11 +14,14 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tasq.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class CharacterActivity extends AppCompatActivity {
+public class CharacterActivity extends AppCompatActivity{
     private ImageView imageView;
     private ImageView mainImageView;
     private ImageView shirtImageView;
     private ImageView pantsImageView;
+    private ImageView mainImageViewProfile;
+    private ImageView shirtImageViewProfile;
+    private ImageView pantsImageViewProfile;
 
     private BottomNavigationView bottomNavigationView;
     private ActivityMainBinding binding;
@@ -26,7 +29,7 @@ public class CharacterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main);
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -51,16 +54,11 @@ public class CharacterActivity extends AppCompatActivity {
         mainImageView = findViewById(R.id.head_image_view);
         shirtImageView = findViewById(R.id.shirt_image_view);
         pantsImageView = findViewById(R.id.pants_image_view);
+
     }
-    @Override
-    public void onBackPressed() {
-        // Add your additional functionality here
-
-        // For example, if you want to go back to the Home activity
-        Intent intent = new Intent(CharacterActivity.this, Home.class);
+    public void goBackToHome(View view) {
+        Intent intent = new Intent(this, Home.class);
         startActivity(intent);
-
-        // Finish the current activity (optional)
         finish();
     }
     private void replaceFragment(Fragment fragment) {
@@ -71,7 +69,6 @@ public class CharacterActivity extends AppCompatActivity {
     }
     public void changeShirtImage(int resourceId) {
         ImageView shirtImageView = findViewById(R.id.shirt_image_view);
-
         shirtImageView.setImageResource(resourceId);
     }
     public void changePantsImage(int resourceId) {
@@ -80,9 +77,11 @@ public class CharacterActivity extends AppCompatActivity {
         pantsImageView.setImageResource(resourceId);
     }
     public void changeHeadImage(int resourceId) {
-        ImageView headImageView = findViewById(R.id.head_image_view);
+        ImageView headImageViewProfile = findViewById(R.id.head_image_view);
+        headImageViewProfile.setImageResource(resourceId);;
+    }
+    public void changeHeadImageProfile(int resourceId) {
 
-        headImageView.setImageResource(resourceId);
     }
     public void changeHead1() {
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) mainImageView.getLayoutParams();
@@ -340,4 +339,5 @@ public class CharacterActivity extends AppCompatActivity {
         layoutParams.topMargin = top;
         pantsImageView.setLayoutParams(layoutParams);
     }
+
 }

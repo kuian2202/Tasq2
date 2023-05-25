@@ -1,5 +1,7 @@
 package com.example.tasq;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -104,13 +106,13 @@ public class HeadFragment extends Fragment implements View.OnClickListener{
         rootView.findViewById(R.id.myHeadView11).setOnClickListener(this);
         rootView.findViewById(R.id.myHeadView12).setOnClickListener(this);
         rootView1.findViewById(R.id.head_image_view).setOnClickListener(this);
+
         head1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((CharacterActivity) requireActivity()).changeHead1();
                 CharacterActivity characterActivity = (CharacterActivity) getActivity();
                 characterActivity.changeHeadImage(R.drawable.head);
-
             }
         });
         head2.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +121,6 @@ public class HeadFragment extends Fragment implements View.OnClickListener{
                 ((CharacterActivity) requireActivity()).changeHead2();
                 CharacterActivity characterActivity = (CharacterActivity) getActivity();
                 characterActivity.changeHeadImage(R.drawable.head2);
-
             }
         });
         head3.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +215,6 @@ public class HeadFragment extends Fragment implements View.OnClickListener{
         });
         return rootView;
     }
-
     @Override
     public void onClick(View view) {
 
