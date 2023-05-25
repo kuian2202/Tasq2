@@ -6,8 +6,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +21,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule extends AppCompatActivity {
-
+    TextView april, may;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_schedule);
+
+    april.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Schedule.this, Schedule2.class);
+            startActivity(intent);
+        }
+    });
+    may.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Schedule.this, Schedule3.class);
+            startActivity(intent);
+        }
+    });
 
     }
     @Override
