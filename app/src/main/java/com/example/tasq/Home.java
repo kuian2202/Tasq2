@@ -39,6 +39,15 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         setContentView(R.layout.activity_home);
         ImageView myImageView1 = findViewById(R.id.group1);
         ImageView myImageView2 = findViewById(R.id.group2);
+        ImageView ach = findViewById(R.id.profile_rectangle);
+        ach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle click event here
+                Intent intent = new Intent(Home.this, ActivityAchievements.class);
+                startActivity(intent);
+            }
+        });
         myImageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

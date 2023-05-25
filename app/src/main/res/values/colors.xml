@@ -15,5 +15,6 @@
     <color name="icon">#5E9FFF</color>
     <color name="transparent">#00000000</color>
     <color name="statusBar">#FFD393</color>
+    <color name="neworange">#E4572E</color>
 
 </resources>
