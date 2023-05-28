@@ -3,11 +3,10 @@ package com.example.tasq.models;
 import android.graphics.Bitmap;
 
 public class ModelClass {
-    private String name, password;
+    private String name;
     private Bitmap image;
     public ModelClass(String name, Bitmap image) {
         this.name = name;
-        this.password = password;
         this.image = image;
     }
     public String getName() {
