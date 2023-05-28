@@ -9,7 +9,12 @@
     android:background="@drawable/gradient_background"
     android:orientation="vertical"
     tools:context=".Settings">
-
+    <ImageView
+        android:id="@+id/feedback"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="320dp"
+        android:src="@drawable/exmark"/>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
