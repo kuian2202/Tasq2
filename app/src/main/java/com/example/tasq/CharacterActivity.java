@@ -56,6 +56,17 @@ public class CharacterActivity extends AppCompatActivity{
         pantsImageView = findViewById(R.id.pants_image_view);
 
     }
+    @Override
+    public void onBackPressed() {
+        // Add your additional functionality here
+
+        // For example, if you want to go back to the Home activity
+        Intent intent = new Intent(CharacterActivity.this, Home.class);
+        startActivity(intent);
+
+        // Finish the current activity (optional)
+        finish();
+    }
     public void goBackToHome(View view) {
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);

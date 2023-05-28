@@ -4,6 +4,15 @@ public class ToDoModel {
     private int id, status;
     private String task;
 
+    private boolean checked;
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
     public int getId() {
         return id;
     }

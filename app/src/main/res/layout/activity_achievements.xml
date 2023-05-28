@@ -44,14 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/textView27"
-                android:layout_width="wrap_content"
-                android:layout_marginStart="300dp"
-                android:layout_height="wrap_content"
-                android:text="0/5" />
-
             <RelativeLayout
+                android:id="@+id/bg1"
                 android:layout_width="336dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="25dp"
@@ -59,7 +53,7 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:id="@+id/achievement1"
+                    android:id="@+id/achievement500"
                     android:layout_width="97dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
@@ -88,6 +82,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/bg2"
                 android:layout_width="336dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="15dp"
@@ -95,7 +90,7 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:id="@+id/achievement2"
+                    android:id="@+id/achievement100"
                     android:layout_width="97dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
@@ -123,6 +118,7 @@
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/bg3"
                 android:layout_width="336dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="15dp"
@@ -130,7 +126,7 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:id="@+id/achievement3"
+                    android:id="@+id/achievement50"
                     android:layout_width="97dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
@@ -142,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="200 Tasks"
+                    android:text="100 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -152,12 +148,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 200 Tasks"
+                    android:text="Finish 100 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/bg4"
                 android:layout_width="336dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="15dp"
@@ -165,7 +162,7 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:id="@+id/achievement4"
+                    android:id="@+id/achievement10"
                     android:layout_width="97dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
@@ -177,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="100 Tasks"
+                    android:text="50 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -187,12 +184,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 100 Tasks"
+                    android:text="Finish 50 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/bg5"
                 android:layout_width="336dp"
                 android:layout_height="105dp"
                 android:layout_marginTop="15dp"
@@ -212,7 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="50 Tasks"
+                    android:text="5 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -222,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 50 Tasks"
+                    android:text="Finish 5 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
             </RelativeLayout>

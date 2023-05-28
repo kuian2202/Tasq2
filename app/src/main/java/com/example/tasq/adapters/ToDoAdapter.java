@@ -17,6 +17,7 @@ import com.example.tasq.database.DatabaseHandler;
 import com.example.tasq.models.ToDoModel;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
@@ -24,11 +25,12 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private List<ToDoModel> todoList;
     private Home home;
     private DatabaseHandler db;
-
-    public ToDoAdapter(DatabaseHandler db,Home home){
+    private Context context;
+    public ToDoAdapter(DatabaseHandler db,Home home, Context context){
         this.db = db;
         this.home = home;
-
+        this.context = context;
+        this.todoList = new ArrayList<>();
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -40,17 +42,34 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         db.openDatabase();
         ToDoModel item = todoList.get(position);
         holder.task.setText(item.getTask());
+
+        // Set the checkbox state without triggering the listener
+        holder.task.setOnCheckedChangeListener(null);
         holder.task.setChecked(toBoolean(item.getStatus()));
+
+        // Set a tag to the checkbox to identify its position in the list
+        holder.task.setTag(position);
+
+        // Set the listener after setting the initial state
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
-                    db.updateStatus(item.getId(), 1);
-                }else{
-                    db.updateStatus(item.getId(), 0);
+                int adapterPosition = (int) compoundButton.getTag();
+                ToDoModel selectedItem = todoList.get(adapterPosition);
+
+                if (isChecked) {
+                    db.updateStatus(selectedItem.getId(), 1, context);
+                } else {
+                    db.updateStatus(selectedItem.getId(), 0, context);
                 }
+
+                selectedItem.setStatus(toInteger(isChecked));
+                todoList.set(adapterPosition, selectedItem);
             }
         });
+    }
+    private int toInteger(boolean value) {
+        return value ? 1 : 0;
     }
     public int getItemCount(){
         return todoList.size();

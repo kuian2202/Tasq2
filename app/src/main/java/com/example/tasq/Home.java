@@ -1,11 +1,15 @@
 package com.example.tasq;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +35,7 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
     private DatabaseHandler db;
     private List<ToDoModel> taskList;
     private BottomNavigationView bottomNavigationView;
-
+    TextView levelTextView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +44,24 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         ImageView myImageView1 = findViewById(R.id.group1);
         ImageView myImageView2 = findViewById(R.id.group2);
         ImageView ach = findViewById(R.id.profile_rectangle);
+        levelTextView = findViewById(R.id.textView3);
+        db = new DatabaseHandler(this);
+        db.openDatabase();
         ach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle click event here
+                boolean achievement5Unlocked = hasUnlockedAchievement("achievement 5");
+                boolean achievement50Unlocked = hasUnlockedAchievement("achievement 10");
+                boolean achievement100Unlocked = hasUnlockedAchievement("achievement 50");
+                boolean achievement500Unlocked = hasUnlockedAchievement("achievement 100");
+                boolean achievement1000Unlocked = hasUnlockedAchievement("achievement 500");
                 Intent intent = new Intent(Home.this, ActivityAchievements.class);
+                intent.putExtra("achievement5Unlocked", achievement5Unlocked);
+                intent.putExtra("achievement10Unlocked", achievement50Unlocked);
+                intent.putExtra("achievement50Unlocked", achievement100Unlocked);
+                intent.putExtra("achievement100Unlocked", achievement500Unlocked);
+                intent.putExtra("achievement500Unlocked", achievement1000Unlocked);
                 startActivity(intent);
             }
         });
@@ -65,14 +82,12 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
             }
         });
 
-        db = new DatabaseHandler(this);
-        db.openDatabase();
 
         taskList = new ArrayList<>();
 
         taskRecyclerView = findViewById(R.id.taskRecyclerView);
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        taskAdapter = new ToDoAdapter(db,this);
+        taskAdapter = new ToDoAdapter(db,this, this);
         taskRecyclerView.setAdapter(taskAdapter);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerItemTouchHelper(taskAdapter));
@@ -125,6 +140,21 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         });
 
 
+    }
+    public boolean hasUnlockedAchievement(String achievementName) {
+        int completedTasks = db.getCompletedTaskCount();
+        if (achievementName.equals("achievement 5")) {
+            return completedTasks >= 5;
+        } else if (achievementName.equals("achievement 10")) {
+            return completedTasks >= 10;
+        } else if (achievementName.equals("achievement 50")) {
+            return completedTasks >= 50;
+        } else if (achievementName.equals("achievement 100")) {
+            return completedTasks >= 100;
+        } else if (achievementName.equals("achievement 500")) {
+            return completedTasks >= 500;
+        }
+        return false;
     }
     public void changeHeadImageProfile(int resourceId) {
         ImageView headImageViewProfile = findViewById(R.id.head_image_view_profile);

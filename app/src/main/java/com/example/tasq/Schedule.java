@@ -21,12 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule extends AppCompatActivity {
-    TextView april, may;
+    TextView april, june;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_schedule);
+
+        june = findViewById(R.id.june);
+        april = findViewById(R.id.april);
 
     april.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -35,7 +38,7 @@ public class Schedule extends AppCompatActivity {
             startActivity(intent);
         }
     });
-    may.setOnClickListener(new View.OnClickListener() {
+    june.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Schedule.this, Schedule3.class);
