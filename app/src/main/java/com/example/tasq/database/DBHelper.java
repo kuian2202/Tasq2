@@ -41,7 +41,6 @@ public class DBHelper extends SQLiteOpenHelper {
         byteImage = byteArrayOutputStream.toByteArray();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", modelClass.getName());
-        contentValues.put("password", modelClass.getPassword());
         contentValues.put("image", byteImage);
         long checkQuery = database.insert("users", null, contentValues);
         if (checkQuery != -1){

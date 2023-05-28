@@ -17,18 +17,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tasq.database.DBHelper;
 import com.example.tasq.models.ModelClass;
-import com.example.tasq.models.ModelClass2;
 
 import java.io.IOException;
 
 public class Settings extends AppCompatActivity {
 
-    EditText uploadName, uploadPassword;
+    EditText uploadName;
     ImageView uploadImage;
+
+    TextView newName;
     Button saveButton;
     private Uri uri;
     private Bitmap bitmapImage;
@@ -39,7 +41,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_settings);
-        uploadPassword = findViewById(R.id.uploadPassword);
+        newName = findViewById(R.id.newName);
         uploadImage = findViewById(R.id.uploadImage);
         uploadName = findViewById(R.id.uploadName);
         saveButton = findViewById(R.id.saveButton);
@@ -97,15 +99,13 @@ public class Settings extends AppCompatActivity {
         finish();
     }
     private void storeImage() {
-        if (!uploadName.getText().toString().isEmpty() && !uploadPassword.getText().toString().isEmpty()
-                && uploadImage.getDrawable() != null && bitmapImage != null) {
-            dbHelper.storeData(new ModelClass(uploadName.getText().toString(), uploadPassword.getText().toString(), bitmapImage));
+        if (!uploadName.getText().toString().isEmpty() && uploadImage.getDrawable() != null && bitmapImage != null) {
+            dbHelper.storeData(new ModelClass(uploadName.getText().toString(), bitmapImage));
             Intent intent = new Intent(Settings.this, Home.class);
             startActivity(intent);
-        }else if(!uploadName.getText().toString().isEmpty() && !uploadPassword.getText().toString().isEmpty()){
+        }else if(!uploadName.getText().toString().isEmpty()){
             String user = uploadName.getText().toString();
-            String pass = uploadPassword.getText().toString();
-            dbHelper.insertData(user, pass);
+            newName.setText(user);
             Intent intent = new Intent(Settings.this, Home.class);
             startActivity(intent);
         }else {
