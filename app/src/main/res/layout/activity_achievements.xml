@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="1000 Tasks"
+                    android:text="500 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 1000 Tasks"
+                    android:text="Finish 500 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
 
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="500 Tasks"
+                    android:text="100 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 500 Tasks"
+                    android:text="Finish 100 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
 
@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="100 Tasks"
+                    android:text="50 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 100 Tasks"
+                    android:text="Finish 50 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
 
@@ -174,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="115dp"
-                    android:text="50 Tasks"
+                    android:text="10 Tasks"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
@@ -184,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="25dp"
-                    android:text="Finish 50 Tasks"
+                    android:text="Finish 10 Tasks"
                     android:textColor="@color/gray"
                     android:textSize="14sp" />
 
