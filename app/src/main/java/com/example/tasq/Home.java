@@ -36,6 +36,9 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
     private List<ToDoModel> taskList;
     private BottomNavigationView bottomNavigationView;
     TextView levelTextView;
+    private int currentLevel;
+    private boolean isClosing = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,11 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         ImageView myImageView2 = findViewById(R.id.group2);
         ImageView ach = findViewById(R.id.profile_rectangle);
         levelTextView = findViewById(R.id.textView3);
+
+        currentLevel = getLevelFromSharedPreferences();
+        levelTextView.setText("Level " + currentLevel);
+
+
         db = new DatabaseHandler(this);
         db.openDatabase();
         ach.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +95,7 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
 
         taskRecyclerView = findViewById(R.id.taskRecyclerView);
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        taskAdapter = new ToDoAdapter(db,this, this);
+        taskAdapter = new ToDoAdapter(db, this, this);
         taskRecyclerView.setAdapter(taskAdapter);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerItemTouchHelper(taskAdapter));
@@ -103,7 +111,7 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddNewTask.newInstance().show(getSupportFragmentManager(),AddNewTask.TAG);
+                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
             }
         });
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -111,29 +119,29 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                case R.id.menuHome:
-                    // Handle home menu item click
-                    // No need to start a new activity, as we are already in the HomeActivity
-                    return true;
-                case R.id.menuSchedule:
-                    // Handle schedule menu item click
-                    // Start the ScheduleActivity
-                    startActivity(new Intent(Home.this, Schedule.class));
-                    finish(); // Optional: Finish the current activity
-                    return true;
-                case R.id.menuCustomize:
-                    // Handle customize menu item click
-                    // Start the CharacterActivity
-                    startActivity(new Intent(Home.this, CharacterActivity.class));
-                    finish(); // Optional: Finish the current activity
-                    return true;
-                case R.id.menuSettings:
-                    // Handle settings menu item click
-                    // Start the SettingsActivity
-                    startActivity(new Intent(Home.this, Settings.class));
-                    finish(); // Optional: Finish the current activity
-                    return true;
-            }
+                    case R.id.menuHome:
+                        // Handle home menu item click
+                        // No need to start a new activity, as we are already in the HomeActivity
+                        return true;
+                    case R.id.menuSchedule:
+                        // Handle schedule menu item click
+                        // Start the ScheduleActivity
+                        startActivity(new Intent(Home.this, Schedule.class));
+                        finish(); // Optional: Finish the current activity
+                        return true;
+                    case R.id.menuCustomize:
+                        // Handle customize menu item click
+                        // Start the CharacterActivity
+                        startActivity(new Intent(Home.this, CharacterActivity.class));
+                        finish(); // Optional: Finish the current activity
+                        return true;
+                    case R.id.menuSettings:
+                        // Handle settings menu item click
+                        // Start the SettingsActivity
+                        startActivity(new Intent(Home.this, Settings.class));
+                        finish(); // Optional: Finish the current activity
+                        return true;
+                }
                 return false;
             }
 
@@ -141,6 +149,7 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
 
 
     }
+
     public boolean hasUnlockedAchievement(String achievementName) {
         int completedTasks = db.getCompletedTaskCount();
         if (achievementName.equals("achievement 5")) {
@@ -156,16 +165,43 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         }
         return false;
     }
+
     public void changeHeadImageProfile(int resourceId) {
         ImageView headImageViewProfile = findViewById(R.id.head_image_view_profile);
         headImageViewProfile.setImageResource(resourceId);
     }
+
     @Override
-    public void handleDialogClose(DialogInterface dialog){
+    public void handleDialogClose(DialogInterface dialog) {
         taskList = db.getAllTasks();
         Collections.reverse(taskList);
         taskAdapter.setTasks(taskList);
         taskAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        int savedLevel = getLevelFromSharedPreferences();
+
+        // Update the currentLevel only if it has changed
+        if (savedLevel != currentLevel) {
+            currentLevel = savedLevel;
+            levelTextView.setText("Level " + currentLevel);
+        }
+    }
+
+    private int getLevelFromSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        return sharedPreferences.getInt("currentLevel", 1);
+    }
+    public void saveLevelToSharedPreferences(int level) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("currentLevel", level);
+        editor.apply();
+    }
+
 
 }

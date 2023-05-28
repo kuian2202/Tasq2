@@ -120,6 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             int currentLevel = Integer.parseInt(levelTextView.getText().toString().replace("Level ", ""));
             int newLevel = currentLevel + 1;
             levelTextView.setText("Level " + newLevel);
+            homeActivity.saveLevelToSharedPreferences(newLevel);
         }
     }
     private void unlockAchievement(Context context, String achievementName) {
