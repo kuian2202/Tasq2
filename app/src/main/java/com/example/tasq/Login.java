@@ -31,28 +31,33 @@ public class Login extends AppCompatActivity {
         btnlogin = (Button) findViewById(R.id.btnsignin1);
         signup = findViewById(R.id.signup);
         DB = new DBHelper(this);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String savedUsername = sharedPreferences.getString("username", "");
+        String savedPassword = sharedPreferences.getString("password", "");
+
+        username.setText(savedUsername);
+        password.setText(savedPassword);
+
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                if(user.equals("")||pass.equals(""))
+                if (user.equals("") || pass.equals("")) {
                     Toast.makeText(Login.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkuserpass = DB.checkusernamepassword(user, pass);
-                    if(checkuserpass==true){
+                } else {
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                    String savedUsername = sharedPreferences.getString("username", "");
+                    String savedPassword = sharedPreferences.getString("password", "");
+
+                    if (user.equals(savedUsername) && pass.equals(savedPassword)) {
                         Toast.makeText(Login.this, "Sign in successful", Toast.LENGTH_SHORT).show();
 
-                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt("currentLevel", 1);
-                        editor.apply();
-
-                        Intent intent  = new Intent(getApplicationContext(), Home.class);
+                        Intent intent = new Intent(getApplicationContext(), Home.class);
                         startActivity(intent);
-                    }else{
+                    } else {
                         Toast.makeText(Login.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }

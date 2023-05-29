@@ -16,10 +16,14 @@
         public static final String DBNAME = "Login.db";
 
         public static final String COLUMN_NAME = "username";
+        public static final String PASSWORD_NAME = "password";
+
         private ByteArrayOutputStream byteArrayOutputStream;
         private byte[] byteImage;
         private Context context;
 
+        private static String createTableQuery = "Create table users(username TEXT " +
+                ",password TEXT)";
         public DBHelper(Context context) {
             super(context, "Login.db", null, 2);
             this.context = context;
@@ -27,7 +31,7 @@
 
         @Override
         public void onCreate(SQLiteDatabase MyDB) {
-            MyDB.execSQL("create Table users(username TEXT primary key, password TEXT, image BLOB)");
+            MyDB.execSQL(createTableQuery);
         }
 
         @Override
@@ -35,32 +39,26 @@
             MyDB.execSQL("drop Table if exists users");
             onCreate(MyDB);
         }
-        public byte[] getByteArrayFromBitmap(Bitmap bitmap) {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            return byteArrayOutputStream.toByteArray();
-        }
-        public void storeData(ModelClass modelClass){
-            SQLiteDatabase database = this.getWritableDatabase();
-            Bitmap bitmapImage = modelClass.getImage();
-            byte[] byteImage = getByteArrayFromBitmap(bitmapImage);
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("image", byteImage);
-            long checkQuery = database.insert("users", null, contentValues);
-            if (checkQuery != -1){
-                Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
-                database.close();
-            } else {
-                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-            }
-        }
-        public void updateName(String oldUsername, String username){
+
+        public void updatePassword(String username, String password){
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put("username", username);
+            values.put("password", password);
 
             String selection = "username = ?";
-            String[] selectionArgs = {oldUsername};
+            String[] selectionArgs = {username};
+
+            db.update("users", values, selection, selectionArgs);
+            db.close();
+        }
+
+        public void updateName(String username, String newUsername){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("username", newUsername);
+
+            String selection = "username = ?";
+            String[] selectionArgs = {username};
 
             db.update("users", values, selection, selectionArgs);
             db.close();
@@ -68,13 +66,24 @@
         public String getUsername(){
             String username = null;
             SQLiteDatabase db = this.getReadableDatabase();
-            Cursor cursor = db.query("users", new String[]{}, null,null,null,null,null);
+            Cursor cursor = db.rawQuery("select * from users where username = ?", new String[]{"username"});
             if(cursor.moveToFirst()){
                 username = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
             }
             cursor.close();
             db.close();
             return username;
+        }
+        public String getPassword(){
+            String password = null;
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery("select * from users where password = ?", new String[]{"password"});
+            if(cursor.moveToFirst()){
+                password = cursor.getString(cursor.getColumnIndex(PASSWORD_NAME));
+            }
+            cursor.close();
+            db.close();
+            return password;
         }
         public Cursor getUser(){
             String username = null;

@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -33,13 +35,10 @@ import java.util.Set;
 
 public class Settings extends AppCompatActivity {
 
-    EditText uploadName;
+    EditText uploadName, uploadPassword;
     ImageView uploadImage;
-
     TextView newName;
     Button saveButton;
-    private Uri uri;
-    private Bitmap bitmapImage;
     DBHelper dbHelper;
     private BottomNavigationView bottomNavigationView;
     @Override
@@ -47,33 +46,13 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_settings);
+
+        dbHelper = new DBHelper(this);
+
         newName = findViewById(R.id.newName);
-        uploadImage = findViewById(R.id.uploadImage);
+        uploadPassword = findViewById(R.id.uploadPassword);
         uploadName = findViewById(R.id.uploadName);
         saveButton = findViewById(R.id.saveButton);
-        dbHelper = new DBHelper(this);
-        String currentUsername = dbHelper.getUsername();
-        newName.setText(currentUsername);
-        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK){
-                            Intent data = result.getData();
-                            assert data != null;
-                            uri = data.getData();
-                            try {
-                                bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                                uploadImage.setImageBitmap(bitmapImage);
-                            } catch (IOException e) {
-                                Toast.makeText(Settings.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Toast.makeText(Settings.this, "No Image Selected", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -101,23 +80,11 @@ public class Settings extends AppCompatActivity {
             }
 
         });
-        uploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    activityResultLauncher.launch(intent);
-                } catch (Exception e){
-                    Toast.makeText(Settings.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                storeImage();
+                storeData();
             }
         });
     }
@@ -133,22 +100,34 @@ public class Settings extends AppCompatActivity {
         // Finish the current activity (optional)
         finish();
     }
-    private void storeImage() {
+    private void storeData() {
         String currentUsername = dbHelper.getUsername();
-        if (bitmapImage != null) {
-            byte[] imageBytes = dbHelper.getByteArrayFromBitmap(bitmapImage);
-            if (imageBytes != null) {
-                dbHelper.storeData(new ModelClass(currentUsername, bitmapImage));
-                uploadImage.setImageBitmap(bitmapImage);
-                Toast.makeText(Settings.this, "Image Saved", Toast.LENGTH_SHORT).show();
+        String currentPassword = dbHelper.getPassword();
+        String newUsername = uploadName.getText().toString();
+        String newPassword = uploadPassword.getText().toString();
+
+        boolean isUsernameChanged = !newUsername.isEmpty() && !newUsername.equals(currentUsername);
+        boolean isPasswordChanged = !newPassword.isEmpty() && !newPassword.equals(currentPassword);
+
+        if (isUsernameChanged || isPasswordChanged) {
+            if (isPasswordChanged) {
+                dbHelper.updatePassword(currentPassword, newPassword);
             }
-        }
-        if(!uploadName.getText().toString().isEmpty()){
-            String user = uploadName.getText().toString();
-            dbHelper.updateName(currentUsername,user);
-            newName.setText(user);
-            Toast.makeText(Settings.this, "Name Updated", Toast.LENGTH_SHORT).show();
+            if (isUsernameChanged) {
+                dbHelper.updateName(currentUsername, newUsername);
+            }
+
+            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("username", newUsername);
+            editor.putString("password", newPassword);
+            editor.apply();
+
+            newName.setText(newUsername);
+
+            Toast.makeText(Settings.this, "Data Updated", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(Settings.this, "No changes made", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
