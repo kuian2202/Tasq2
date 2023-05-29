@@ -7,84 +7,94 @@
     tools:context=".FeedbackActivity"
     android:background="@drawable/gradient_background">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="307dp"
-        android:layout_height="643dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/tbgd"
-        android:orientation="vertical"
-        android:padding="20dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="625dp"
+        app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/h1"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_marginTop="6dp"
-            android:text="Send Feedback"
-            android:textColor="@color/tblue"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/tbgd"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewSubject"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Enter subject:"
-            android:textColor="@color/tblue"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/h1"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginTop="6dp"
+                android:text="Send Feedback"
+                android:textColor="@color/tblue"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextSubject"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/textViewSubject"
-            android:layout_marginTop="20dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="@color/statusBar"
-            android:inputType="text"
-            android:textColor="#000000"
-            android:textColorHighlight="#000000" />
+            <TextView
+                android:id="@+id/textViewSubject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Enter subject:"
+                android:textColor="@color/tblue"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textViewBody"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editTextSubject"
-            android:layout_marginTop="20dp"
-            android:text="Enter feedback:"
-            android:textColor="@color/tblue"
-            android:textSize="24sp" />
+            <EditText
+                android:id="@+id/editTextSubject"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/textViewSubject"
+                android:layout_marginTop="20dp"
+                android:background="#FFFFFF"
+                android:backgroundTint="@color/statusBar"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000" />
 
-        <EditText
-            android:id="@+id/editTextBody"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewBody"
-            android:layout_marginTop="20dp"
-            android:background="@color/black"
-            android:backgroundTint="@color/statusBar"
-            android:inputType="textMultiLine"
-            android:minLines="11"
-            android:textColor="#000000"
-            android:gravity="top"
-            android:textColorHighlight="#000000" />
+            <TextView
+                android:id="@+id/textViewBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextSubject"
+                android:layout_marginTop="20dp"
+                android:text="Enter feedback:"
+                android:textColor="@color/tblue"
+                android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/buttonSend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editTextBody"
-            android:background="@color/purple_700"
-            android:backgroundTint="@color/black"
-            android:layout_marginTop="40dp"
-            android:text="Send Feedback" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTextBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewBody"
+                android:layout_marginTop="20dp"
+                android:background="@color/black"
+                android:backgroundTint="@color/statusBar"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="11"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000" />
+
+            <Button
+                android:id="@+id/buttonSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextBody"
+                android:layout_marginTop="40dp"
+                android:background="@color/purple_700"
+                android:backgroundTint="@color/black"
+                android:text="Send Feedback" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
