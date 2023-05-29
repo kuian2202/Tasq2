@@ -46,7 +46,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_settings);
-
+        ImageView myImageView1 = findViewById(R.id.feedback);
         dbHelper = new DBHelper(this);
 
         newName = findViewById(R.id.newName);
@@ -79,6 +79,14 @@ public class Settings extends AppCompatActivity {
                 return false;
             }
 
+        });
+        myImageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click event
+                Intent intent = new Intent(Settings.this, FeedbackActivity.class);
+                startActivity(intent);
+            }
         });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
