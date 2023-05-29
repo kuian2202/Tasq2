@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/tbg"
+    style="@style/SCREEN"
     tools:context=".AddNewTask">
 
     <EditText
         android:id="@+id/newTaskText"
+        style="@style/TEXTNEWTASK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
         android:paddingLeft="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColorHint="@color/tblue"
         android:hint="New Task"/>
 
     <Button
@@ -25,10 +25,9 @@
         android:layout_below="@id/newTaskText"
         android:layout_alignParentEnd="true"
         android:textSize="16sp"
+        style="@style/BUTTONNEWTASK"
         android:text="save"
         android:textAllCaps="false"
-        android:textColor="@color/tblue"
         android:background="@color/transparent"/>
-
 
 </RelativeLayout>

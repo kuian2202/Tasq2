@@ -8,12 +8,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,10 +26,12 @@ import com.example.tasq.database.DatabaseHandler;
 import com.example.tasq.models.ToDoModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Home extends AppCompatActivity implements DialogCloseListener {
     private RecyclerView taskRecyclerView;
@@ -37,8 +42,11 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
     private BottomNavigationView bottomNavigationView;
     TextView levelTextView;
     private int currentLevel;
+    private Switch switchTheme;
+    boolean nightMODE;
     private boolean isClosing = false;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,29 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         levelTextView.setText("Level " + currentLevel);
 
 
+        switchTheme = findViewById(R.id.switchBtn);
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        nightMODE = sharedPreferences.getBoolean("night", false);
+        if(nightMODE){
+            switchTheme.setChecked(true);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
+        switchTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(nightMODE){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    editor = sharedPreferences.edit();
+                    editor.putBoolean("night", false);
+                }else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    editor = sharedPreferences.edit();
+                    editor.putBoolean("night", true);
+                }
+                editor.apply();
+            }
+        });
         db = new DatabaseHandler(this);
         db.openDatabase();
         ach.setOnClickListener(new View.OnClickListener() {

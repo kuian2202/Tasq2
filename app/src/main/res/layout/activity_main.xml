@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/character_c"
+    style="@style/SCREEN"
     android:foregroundGravity="top"
     tools:context=".CharacterActivity">
 
