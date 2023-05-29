@@ -41,8 +41,7 @@ import com.example.tasq.models.ToDoModel;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener,
-        ActivityCompat.OnRequestPermissionsResultCallback {
+public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     public static final String TAG = "AddNewTask";
     public static final String CHANNEL_ID = "task_channel";
@@ -54,7 +53,8 @@ public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDat
     private long taskId;
 
     private int year, month, day, hour, minute;
-
+    private DatePicker datePicker;
+    private TimePicker timePicker;
     public static AddNewTask newInstance() {
         return new AddNewTask();
     }
@@ -68,6 +68,9 @@ public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDat
 
         newTaskText = view.findViewById(R.id.newTaskText);
         saveButton = view.findViewById(R.id.newTaskButton);
+
+        datePicker = view.findViewById(R.id.datePicker);
+        timePicker = view.findViewById(R.id.timePicker);
 
         // Set an initial date and time value (e.g., current date and time)
         Calendar calendar = Calendar.getInstance();
@@ -88,6 +91,13 @@ public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDat
                     Toast.makeText(getActivity(), "Please enter a task", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                // Retrieve the selected date and time from the DatePicker and TimePicker
+                int year = datePicker.getYear();
+                int month = datePicker.getMonth();
+                int day = datePicker.getDayOfMonth();
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
 
                 // Construct the reminder date and time
                 Calendar reminderCalendar = Calendar.getInstance();
@@ -127,7 +137,7 @@ public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDat
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().equals("")) {
+                if (s.toString().isEmpty()) {
                     saveButton.setEnabled(false);
                     saveButton.setTextColor(Color.GRAY);
                 } else {
@@ -165,11 +175,10 @@ public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDat
         // Create a PendingIntent with a unique ID
         int requestCode = (int) taskId;
         int flags = PendingIntent.FLAG_UPDATE_CURRENT;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            flags |= PendingIntent.FLAG_MUTABLE;
-        } else {
-            flags |= PendingIntent.FLAG_IMMUTABLE;
-        }
+
+        // Add FLAG_IMMUTABLE to make the PendingIntent immutable
+        flags |= PendingIntent.FLAG_IMMUTABLE;
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, flags);
 
         // Get the AlarmManager instance
@@ -219,5 +228,4 @@ public class AddNewTask extends DialogFragment implements DatePickerDialog.OnDat
             ((DialogCloseListener) activity).handleDialogClose(dialog);
         }
     }
-
 }

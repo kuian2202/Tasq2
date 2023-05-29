@@ -3,6 +3,7 @@ package com.example.tasq;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash2);
+
+        NotificationReceiver notificationReceiver = new NotificationReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_BOOT_COMPLETED);
+        registerReceiver(notificationReceiver, filter);
 
         signin =  findViewById(R.id.signinbtn);
         register =findViewById(R.id.register);

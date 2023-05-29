@@ -14,11 +14,16 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
-public class NotificationReceiver extends BroadcastReceiver {
+import com.example.tasq.database.DatabaseHandler;
+import com.example.tasq.models.ToDoModel;
+
+public class NotificationReceiver extends BroadcastReceiver  {
 
     private static final String CHANNEL_ID = "task_channel";
 
     public void onReceive(Context context, Intent intent) {
+
+        ToDoModel todo = new ToDoModel();
         // Check if the permission is granted
         if (hasVibratePermission(context)) {
             // Vibrate the device
@@ -41,7 +46,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         }
 
         // Create and display the notification
-        createNotification(context);
+        createNotification(context, todo);
     }
 
     private boolean hasVibratePermission(Context context) {
@@ -50,17 +55,16 @@ public class NotificationReceiver extends BroadcastReceiver {
     }
 
 
-    private void createNotification(Context context) {
+    private void createNotification(Context context, ToDoModel todo) {
         // Create the notification channel (if necessary) for Android Oreo and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(context);
         }
-
         // Create the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.check)
                 .setContentTitle("Task Reminder")
-                .setContentText("This is your reminder for the task.")
+                .setContentText("Finish Your Pending Tasks")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);
 
