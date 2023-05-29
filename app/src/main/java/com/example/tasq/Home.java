@@ -54,8 +54,6 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        ImageView myImageView1 = findViewById(R.id.group1);
-        ImageView myImageView2 = findViewById(R.id.group2);
         ImageView ach = findViewById(R.id.profile_rectangle);
         levelTextView = findViewById(R.id.textView3);
 
@@ -103,22 +101,6 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
                 intent.putExtra("achievement50Unlocked", achievement100Unlocked);
                 intent.putExtra("achievement100Unlocked", achievement500Unlocked);
                 intent.putExtra("achievement500Unlocked", achievement1000Unlocked);
-                startActivity(intent);
-            }
-        });
-        myImageView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the click event
-                Intent intent = new Intent(Home.this, Group1.class);
-                startActivity(intent);
-            }
-        });
-        myImageView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the click event
-                Intent intent = new Intent(Home.this, Group2.class);
                 startActivity(intent);
             }
         });
