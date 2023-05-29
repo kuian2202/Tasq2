@@ -55,6 +55,11 @@ public class Login extends AppCompatActivity {
                     if (user.equals(savedUsername) && pass.equals(savedPassword)) {
                         Toast.makeText(Login.this, "Sign in successful", Toast.LENGTH_SHORT).show();
 
+                        SharedPreferences sharedPreferences2 = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences2.edit();
+                        editor.putInt("currentLevel", 1);
+                        editor.apply();
+
                         Intent intent = new Intent(getApplicationContext(), Home.class);
                         startActivity(intent);
                     } else {
