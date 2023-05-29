@@ -24,9 +24,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String TASK = "task";
     private static final String STATUS = "status";
+    private static final String REMINDER = "reminder";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " +
-    TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-    TASK + " TEXT, " + STATUS + " INTEGER)";
+            TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TASK + " TEXT, " + STATUS + " INTEGER, " + REMINDER + " INTEGER)";
     private Context context;
     private TextView levelTextView;
     private TextView achievementsTextView;
@@ -52,12 +53,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     public void openDatabase(){
         db = this.getWritableDatabase();
+
     }
     public void insertTask(ToDoModel task){
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
+    }
+    public long addTask(String task) {
+        ContentValues cv = new ContentValues();
+        cv.put(TASK, task);
+        cv.put(STATUS, 0);
+        return db.insert(TODO_TABLE, null, cv);
+    }
+
+    public void addReminder(long taskId, long reminderTimeInMillis) {
+        ContentValues cv = new ContentValues();
+        cv.put(REMINDER, reminderTimeInMillis);
+        db.update(TODO_TABLE, cv, ID + "=?", new String[]{String.valueOf(taskId)});
     }
     public List<ToDoModel>getAllTasks(){
         List<ToDoModel> taskList = new ArrayList<>();
@@ -153,6 +167,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     public void deleteTask(int id){
         db.delete(TODO_TABLE, ID + "=?", new String[]{String.valueOf(id)});
+    }
+    public ToDoModel getTask(long taskId) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {ID, TASK};
+        String selection = ID + " = ?";
+        String[] selectionArgs = {String.valueOf(taskId)};
+
+        Cursor cursor = db.query(
+                TODO_TABLE,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        ToDoModel task = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int idIndex = cursor.getColumnIndex(ID);
+            int taskTextIndex = cursor.getColumnIndex(TASK);
+
+            int id = cursor.getInt(idIndex);
+            String taskText = cursor.getString(taskTextIndex);
+
+            task = new ToDoModel();
+            task.setId(id);
+            task.setTask(taskText);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        return task;
     }
 }
 

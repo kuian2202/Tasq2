@@ -5,29 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/SCREEN"
+    android:background="@color/tbg"
     tools:context=".AddNewTask">
 
     <EditText
         android:id="@+id/newTaskText"
-        style="@style/TEXTNEWTASK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:hint="New Task"
         android:paddingLeft="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:hint="New Task"/>
+        android:textColorHint="@color/tblue" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="398dp"
+        android:layout_below="@id/newTaskText"
+        android:layout_marginTop="8dp" />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datePicker"
+        android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/newTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/newTaskText"
         android:layout_alignParentEnd="true"
-        android:textSize="16sp"
-        style="@style/BUTTONNEWTASK"
-        android:text="save"
+        android:background="@color/transparent"
+        android:text="Save"
+        android:layout_marginTop="770dp"
         android:textAllCaps="false"
-        android:background="@color/transparent"/>
+        android:textColor="@color/tblue"
+        android:textSize="16sp" />
+
 
 </RelativeLayout>

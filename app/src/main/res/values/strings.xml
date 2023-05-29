@@ -15,4 +15,5 @@
     <string name="task">My Task</string>
     <string name="highpriotask">High Priority Task</string>
     <string name="schedule">Daily Schedule</string>
+    <string name="default_notification_channel_id">task_channel</string>
 </resources>
