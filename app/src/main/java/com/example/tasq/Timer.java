@@ -2,6 +2,7 @@ package com.example.tasq;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -112,5 +113,16 @@ public class Timer extends AppCompatActivity {
 
         String timeLeft = String.format("%02d:%02d:%02d", hours, minutes, seconds);
         tvTimer.setText(timeLeft);
+    }
+    @Override
+    public void onBackPressed() {
+        // Add your additional functionality here
+
+        // For example, if you want to go back to the Home activity
+        Intent intent = new Intent(Timer.this, Home.class);
+        startActivity(intent);
+
+        // Finish the current activity (optional)
+        finish();
     }
 }
