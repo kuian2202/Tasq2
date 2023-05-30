@@ -65,7 +65,7 @@ public class Settings extends AppCompatActivity {
                     case R.id.menuSchedule:
                         // Handle schedule menu item click
                         // Start the ScheduleActivity
-                        startActivity(new Intent(Settings.this, Schedule.class));
+                        startActivity(new Intent(Settings.this, Timer.class));
                         finish(); // Optional: Finish the current activity
                         return true;
                     case R.id.menuCustomize:

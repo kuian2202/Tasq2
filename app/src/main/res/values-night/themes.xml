@@ -46,6 +46,10 @@
         <item name="android:background">@color/tbg</item>
         <item name="android:textColor">@color/tblue</item>
     </style>
+    <style name="BUTTONALARM">
+        <item name="android:backgroundTint">@color/tbg</item>
+        <item name="android:textColor">@color/tblue</item>
+    </style>
 
     <style name="BUTTONNEWTASK">
         <item name="android:textColor">@color/tbg</item>

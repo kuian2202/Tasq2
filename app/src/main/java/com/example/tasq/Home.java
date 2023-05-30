@@ -141,7 +141,7 @@ public class Home extends AppCompatActivity implements DialogCloseListener {
                     case R.id.menuSchedule:
                         // Handle schedule menu item click
                         // Start the ScheduleActivity
-                        startActivity(new Intent(Home.this, Schedule.class));
+                        startActivity(new Intent(Home.this, Timer.class));
                         finish(); // Optional: Finish the current activity
                         return true;
                     case R.id.menuCustomize:
